@@ -48,13 +48,13 @@ export default function App() {
     <LangContext.Provider value={langData}>
       <ThemeContext.Provider value={themeData}>
         <NavigationContainer theme={theme === "dark" ? darkTheme : lightTheme}>
-          <Tab.Navigator labeled="false">
+          <Tab.Navigator>
             <Tab.Screen
               options={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarIcon: ({ color }) => (
-                  <FontAwesomeIcon icon={faHouse} color={color} />
+                tabBarIcon: ({ focused, color, size }) => (
+                  <FontAwesomeIcon icon={faHouse} color={color} size={size * focused ? 23 : 18}/>
                 ),
               }}
               name="Home"
@@ -64,8 +64,13 @@ export default function App() {
               options={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarIcon: ({ color }) => (
-                  <FontAwesomeIcon icon={faPlusCircle} color={color} />
+                tabBarIcon: ({ focused, color, size }) => (
+                  // if (focused) {
+                  //   return (<FontAwesomeIcon icon={faPlusCircle} color={color} size={size * focused ? 30 : 20}/>)
+                  // }else{
+                  //   return ()
+                  // }
+                  <FontAwesomeIcon icon={faPlusCircle} color={color} size={size * focused ? 23 : 18}/>
                 ),
               }}
               name="Add"
@@ -75,8 +80,8 @@ export default function App() {
               options={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarIcon: ({ color }) => (
-                  <FontAwesomeIcon icon={faSliders} color={color} />
+                tabBarIcon: ({ focused, color, size }) => (
+                  <FontAwesomeIcon icon={faSliders} color={color} size={size * focused ? 23 : 18}/>
                 ),
               }}
               name="Settings"
