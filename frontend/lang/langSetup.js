@@ -15,6 +15,3 @@ export const i = new I18n({
   },
 });
 
-export let strings = {
-  ...pt,
-};

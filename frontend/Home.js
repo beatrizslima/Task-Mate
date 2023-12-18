@@ -1,53 +1,23 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { getTheme } from "./Colors";
-import { useTheme } from "@react-navigation/native";
-import { ThemeContext } from "./ThemeContext";
+import { Text, View } from "react-native";
 import { i } from "./lang/langSetup";
-
-
+import { useStyles } from "./Styles";
+import { LangContext } from "./lang/langSetup";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
+  const [styles] = useStyles();
+  React.useContext(LangContext)
 
-const { colors, dark } = useTheme();
-const { theme } = React.useContext(ThemeContext);
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: colors.background,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    subtitle: {
-      padding: 1,
-      alignSelf: "center",
-      borderRadius: 4,
-      color: colors.subtitle,
-      fontWeight: "bold",
-    },
-    taskBoard: {
-      alignItems: "center",
-      borderRadius: 6,
-      borderWidth: 5,
-      padding: 30,
-      borderColor: colors.primary,
-    },
-    taskTitle: {
-      fontSize: 18,
-      fontWeight: "bold",
-      color: colors.title,
-    },
-  });
-  
   return (
-    <View style={styles.container}>
-      <View style={styles.taskBoard}>
-        <Text style={styles.taskTitle}>{i.t("today")}</Text>
-        <Text style={styles.subtitle}>{i.t("madeThis")}</Text>
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        <View style={styles.board}>
+          <Text style={styles.h1}>{i.t("today")}</Text>
+          <Text style={styles.subtitle}>{i.t("madeThis")}</Text>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

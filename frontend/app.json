@@ -4,10 +4,10 @@
     "slug": "TaskMate",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/backvenn.svg",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/backvenn.svg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

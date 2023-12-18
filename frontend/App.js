@@ -15,6 +15,8 @@ import {
 import { ThemeContext } from "./ThemeContext";
 import { DeviceLanguage, LangContext, i } from "./lang/langSetup";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import AddTask from "./AddTask";
+import { PaperProvider } from "react-native-paper";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +28,9 @@ export default function App() {
   const scheme = useColorScheme();
 
   useEffect(() => {
+    console.log("useEffect App", lang)
     async function getSettings() {
+      console.log("getsettings App", lang)
       AsyncStorage.getItem("theme")
         .then((x) => setTheme(x))
         .catch((err) => setTheme(scheme));
@@ -42,53 +46,52 @@ export default function App() {
     }
 
     if (!theme || !lang) getSettings();
-  }, []);
+  }, [lang]);
+
+
 
   return (
     <LangContext.Provider value={langData}>
       <ThemeContext.Provider value={themeData}>
-        <NavigationContainer theme={theme === "dark" ? darkTheme : lightTheme}>
-          <Tab.Navigator>
-            <Tab.Screen
-              options={{
-                headerShown: false,
-                tabBarShowLabel: false,
-                tabBarIcon: ({ focused, color, size }) => (
-                  <FontAwesomeIcon icon={faHouse} color={color} size={size * focused ? 23 : 18}/>
-                ),
-              }}
-              name="Home"
-              component={Home}
-            />
-            <Tab.Screen
-              options={{
-                headerShown: false,
-                tabBarShowLabel: false,
-                tabBarIcon: ({ focused, color, size }) => (
-                  // if (focused) {
-                  //   return (<FontAwesomeIcon icon={faPlusCircle} color={color} size={size * focused ? 30 : 20}/>)
-                  // }else{
-                  //   return ()
-                  // }
-                  <FontAwesomeIcon icon={faPlusCircle} color={color} size={size * focused ? 23 : 18}/>
-                ),
-              }}
-              name="Add"
-              component={Home}
-            />
-            <Tab.Screen
-              options={{
-                headerShown: false,
-                tabBarShowLabel: false,
-                tabBarIcon: ({ focused, color, size }) => (
-                  <FontAwesomeIcon icon={faSliders} color={color} size={size * focused ? 23 : 18}/>
-                ),
-              }}
-              name="Settings"
-              component={Settings}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <PaperProvider theme={theme === "dark" ? darkTheme : lightTheme}>
+          <NavigationContainer theme={theme === "dark" ? darkTheme : lightTheme}>
+            <Tab.Navigator>
+              <Tab.Screen
+                options={{
+                  headerShown: false,
+                  tabBarShowLabel: false,
+                  tabBarIcon: ({ focused, color, size }) => (
+                    <FontAwesomeIcon icon={faHouse} color={color} size={size * focused ? 23 : 18} />
+                  ),
+                }}
+                name="Home"
+                component={Home}
+              />
+              <Tab.Screen
+                options={{
+                  headerShown: false,
+                  tabBarShowLabel: false,
+                  tabBarIcon: ({ focused, color, size }) => (
+                    <FontAwesomeIcon icon={faPlusCircle} color={color} size={size * focused ? 23 : 18} />
+                  ),
+                }}
+                name="Add"
+                component={AddTask}
+              />
+              <Tab.Screen
+                options={{
+                  headerShown: false,
+                  tabBarShowLabel: false,
+                  tabBarIcon: ({ focused, color, size }) => (
+                    <FontAwesomeIcon icon={faSliders} color={color} size={size * focused ? 23 : 18} />
+                  ),
+                }}
+                name="Settings"
+                component={Settings}
+              />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </PaperProvider>
       </ThemeContext.Provider>
     </LangContext.Provider>
   );
