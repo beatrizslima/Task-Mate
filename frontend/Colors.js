@@ -14,11 +14,12 @@ export const lightTheme = {
     primaryVariant: "#A267AC",
     secondary: "#CE7BB0",
     secondaryVariant: "#FFBCD1",
-    onPrimary: "#FFFFFF",
+    onPrimary: "#ffffff",
+    outline: "#ccc",
     surface: "#FBF5F5",
     title: "#333",
     text: "#333",
-    subtitle: "#ccc",
+    subtitle: "#777",
   },
 };
 
@@ -35,6 +36,7 @@ export const darkTheme = {
     secondary: "#BE8ABF",
     secondaryVariant: "#EA9ABB",
     onPrimary: "#ffffff",
+    outline: "#555",
     surface: "#4D3C77",
     title: "#FFFFFF",
     text: "#FFFFFF",

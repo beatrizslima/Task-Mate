@@ -6,5 +6,8 @@ export default En = {
     switchLang: "Switch language",
     settings: "Settings",
     createNew: "Create new \ntask",
-    labelTaskName: "Task name"
+    labelTaskName: "Give your task a name",
+    labelTaskDescription: "Tell me more about it..",
+    startDateLabel: "Start",
+    endDateLabel: "Conclusion"
 }

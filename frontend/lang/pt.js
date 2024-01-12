@@ -6,5 +6,8 @@ export default Pt = {
     switchLang: "Trocar idioma",
     settings: "Configurações",
     createNew: "Criar nova \ntarefa",
-    labelTaskName: "Nome da tarefa"
+    labelTaskName: "Dê um nome a sua tarefa",
+    labelTaskDescription: "Detalhe mais sobre ela...",
+    startDateLabel: "Início",
+    endDateLabel: "Conclusão"
 }
